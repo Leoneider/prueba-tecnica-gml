@@ -1,0 +1,57 @@
+<div mat-dialog-content class="p-7 w-96">
+
+    <h1>Create New Client</h1>
+    <hr class="mb-7">
+
+
+    <form [formGroup]="clientForm" >
+        <div class="flex flex-col gap-4">
+            <mat-form-field>
+                <mat-label>Name</mat-label>
+                <input type="text" matInput formControlName="name">
+                @if (clientForm.controls.name.hasError('required')) {
+                <mat-error>Name is <strong>required</strong></mat-error>
+                }
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Phone</mat-label>
+                <input type="phone" matInput formControlName="phone">
+                @if (clientForm.controls.phone.hasError('required')) {
+                <mat-error>Phone is <strong>required</strong></mat-error>
+                }
+            </mat-form-field>
+
+
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
+                @if (clientForm.controls.email.hasError('required')) {
+                <mat-error>Email is <strong>required</strong></mat-error>
+                }
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Start Date</mat-label>
+                <input type="date" matInput formControlName="startDate">
+                @if (clientForm.controls.startDate.hasError('required')) {
+                <mat-error>Start Date is <strong>required</strong></mat-error>
+                }
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>End Date</mat-label>
+                <input type="date" matInput formControlName="endDate">
+                @if (clientForm.controls.endDate.hasError('required')) {
+                <mat-error>End Date is <strong>required</strong></mat-error>
+                }
+            </mat-form-field>
+           
+            <button mat-flat-button  color="primary" (click)="addClient()"> <mat-icon>save</mat-icon> OK</button>
+        </div>
+    </form>
+
+
+
+
+</div>

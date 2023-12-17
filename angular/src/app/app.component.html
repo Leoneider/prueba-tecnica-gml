@@ -1,0 +1,36 @@
+<div style="height: 80vh;">
+  <mat-toolbar>
+    <mat-toolbar-row class="container mx-auto justify-between">
+      <img width="160px" height="54px" src="https://www.alianza.com.co/o/alianza-theme/images/alianza/layout_set_logo.png" alt="logo">
+
+      <button mat-icon-button (click)="sidenav.toggle()" class="sm:hidden">
+        <mat-icon>menu</mat-icon>
+      </button>
+
+      <div class="hidden sm:flex sm:justify-end">
+        <a routerLink="/customers" mat-list-item>Cients</a>
+      </div>
+
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <mat-sidenav-container style="height: 100%;">
+    <mat-sidenav #sidenav>
+      <mat-nav-list>
+
+        <a routerLink="/customers" (click)="sidenav.toggle()" mat-list-item>Cients</a>
+        <a routerLink="/#" mat-list-item>Client look history</a>
+        <a routerLink="/#" mat-list-item>Emergence PIN configuration</a>
+        <a routerLink="/#" mat-list-item>Emergence PIN history</a>
+        
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div class="container mx-auto p-4">
+       
+        <router-outlet></router-outlet>
+      </div>
+      
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
