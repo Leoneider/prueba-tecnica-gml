@@ -3,17 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ClientService } from '../../../services/client.service';
 
 import { AddClientComponent } from '../add-client/add-client.component';
-
-
-export interface Clientes {
-  sharedKey: string;
-  businessId: string;
-  email: string;
-  phone: string;
-  dateAdd: string;
-}
-
-
+import { Client } from '../../../models/IClient';
 
 @Component({
   selector: 'app-customers',
@@ -57,15 +47,3 @@ export class CustomersComponent {
 
 
 }
-
-
-export interface Client {
-  id:string;
-  name: string
-  phone: string;
-  email: string;
-  startDate: string;
-  endDate: string;
-}
-
-

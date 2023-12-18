@@ -5,11 +5,11 @@ import { MAT_DIALOG_DATA, MatDialog } from "@angular/material/dialog";
 import { MatIconModule } from "@angular/material/icon";
 
 
-import { Client } from "../customers/customers.component";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 import { ClientService } from "../../../services/client.service";
+import { Client } from "../../../models/IClient";
 
 
 @Component({
