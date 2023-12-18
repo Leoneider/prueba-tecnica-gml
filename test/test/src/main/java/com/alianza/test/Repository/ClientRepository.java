@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ClientRepository extends JpaRepository<Client, Long> {
 
-    public Client findByBusinessId(String businessId);
+    public Client findBySharedKey(String businessId);
 }

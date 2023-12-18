@@ -20,8 +20,8 @@ public class ClientService {
         return clients;
     }
 
-    public Client getClientByBusinessId(String businessId) {
-        Client client = clientRepository.findByBusinessId(businessId);
+    public Client getClientBySharedKey(String businessId) {
+        Client client = clientRepository.findBySharedKey(businessId);
         return client;
     }
 

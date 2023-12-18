@@ -22,5 +22,9 @@ export class ClientService {
     return this.http.put(`http://localhost:8080/client/${id}`, client);
   }
 
+  getClientSharedKey(sharedKey: string): Observable<Client> {
+    return this.http.get<Client>(`http://localhost:8080/client/${sharedKey}`);
+  }
+
   
 }

@@ -42,10 +42,12 @@ public class ClientController {
 
             log.info("ClientController.getClientByBusinessId: {}", businessId);
 
-            Client client = clientService.getClientByBusinessId(businessId);
+            Client client = clientService.getClientBySharedKey(businessId);
 
-            if(client == null)
+            if(client == null) {
+                log.info("Client not exist: {}", businessId);
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
 
             return new ResponseEntity<>(client, HttpStatus.OK);
 

@@ -4,6 +4,8 @@ import { ClientService } from '../../../services/client.service';
 
 import { AddClientComponent } from '../add-client/add-client.component';
 import { Client } from '../../../models/IClient';
+import { FormControl } from '@angular/forms';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-customers',
@@ -15,11 +17,36 @@ export class CustomersComponent {
 
   displayedColumns: string[] = ['sharedKey', 'businessId', 'email', 'phone', 'dateAdd', 'actions'];
   dataSource: Client[] = [];
+  dataClient:  Client[] = [];
+
+  search = new FormControl('');
 
   ngOnInit(): void {
     this.clientService.getClients().subscribe((data) => {
       this.dataSource = data;
+      this.dataClient = data;
     })
+
+    this.search.valueChanges.pipe(debounceTime(300)).subscribe((value) => {
+      if (!value) {
+        this.dataSource = this.dataClient;
+        return;
+      }
+
+      this.searchClient(value);
+     
+    });
+  }
+
+  searchClient(value:string) {
+    this.clientService.getClientSharedKey(value).subscribe({
+      next: (data) => {
+        this.dataSource = [data];
+      },
+      error: () => {
+        this.dataSource = [];
+      }
+    });
   }
 
 
@@ -29,6 +56,7 @@ export class CustomersComponent {
     dialogRef.afterClosed().subscribe(() => {
       this.clientService.getClients().subscribe((data) => {
         this.dataSource = data;
+        this.dataClient = data;
       })
     });
   }
@@ -41,6 +69,7 @@ export class CustomersComponent {
     dialogRef.afterClosed().subscribe(() => {
       this.clientService.getClients().subscribe((data) => {
         this.dataSource = data;
+        this.dataClient = data;
       })
     });
   }
